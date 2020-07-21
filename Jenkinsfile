@@ -6,7 +6,7 @@ pipeline{
         stage('Calling Build Method'){
             steps{
                 script{
-                    build
+                    build()
                 }
             }
             
