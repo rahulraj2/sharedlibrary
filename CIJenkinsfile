@@ -10,8 +10,6 @@ pipeline{
                     sh "docker build -t ${ENV_APPLICATION_NAME} . --no-cache"
                 }
             }
-            
-
         }
     }
 }
