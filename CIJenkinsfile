@@ -9,7 +9,7 @@ pipeline{
                     build()
                     echo "${ENV_APPLICATION_NAME}"
                     git credentialsId: 'github', url: 'https://github.com/rahulraj2/python.git'
-                    bat label: '', script: "docker build -t '${ENV_APPLICATION_NAME}' . --no-cache"
+                    bat label: '', script: "docker build -t ${ENV_APPLICATION_NAME} . --no-cache"
                 }
             }
         }
