@@ -4,6 +4,7 @@ pipeline{
     agent any
     stages{
         stage('Calling Build Method'){
+        agent none
             steps{
                 script{
                     build()
