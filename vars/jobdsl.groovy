@@ -15,7 +15,7 @@ pipeline{
                         BRANCH_INCLUDES = "Developemnt-*|Release-*"
                     }
                     jobDsl scriptText: """folder("${JOB_TYPE}"){
-                        description(\'Folder containing all jobs for folder-a\')
+                        description(\'Folder containing all jobs for ${JOB_TYPE} Jobs\')
                     }
                     multibranchPipelineJob("${JOB_TYPE}/${SERVICE_NAME}") {
                         branchSources {
@@ -28,7 +28,13 @@ pipeline{
                         }
                         orphanedItemStrategy {
                             discardOldItems {
-                               numToKeep(20)
+                               numToKeep(5)
+                            }
+                        }
+                        configure { node ->
+                            def webhookTrigger = node / triggers / 'com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger' {
+                                spec('')
+                                token("test-multibranch")
                             }
                         }
                     }"""
