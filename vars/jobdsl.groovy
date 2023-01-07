@@ -17,7 +17,7 @@ pipeline{
                     jobDsl scriptText: """folder("${JOB_TYPE}"){
                         description(\'Folder containing all jobs for folder-a\')
                     }
-                    multibranchPipelineJob("../${JOB_TYPE}/${SERVICE_NAME}") {
+                    multibranchPipelineJob("${JOB_TYPE}/${SERVICE_NAME}") {
                         branchSources {
                             git {
                                 id('${BUILD_NUMBER}') // IMPORTANT: use a constant and unique identifier
