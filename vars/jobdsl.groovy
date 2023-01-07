@@ -5,6 +5,9 @@ pipeline{
         string(name: 'DEVELOPER_GIT_URL', defaultValue: '', description: 'provide git URL')
         string(name: 'SERVICE_NAME', defaultValue: '', description: 'Enter the Service Name')
     }
+    environment{
+        WEBHOOK_TOKEN = credentialsId("webhooktoken")
+    }
     stages{
         stage("Invoking Job DSL"){
             steps{
@@ -34,7 +37,7 @@ pipeline{
                         configure { node ->
                             def webhookTrigger = node / triggers / 'com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger' {
                                 spec('')
-                                token("test-multibranch")
+                                token("${WEBHOOK_TOKEN}")
                             }
                         }
                     }"""
