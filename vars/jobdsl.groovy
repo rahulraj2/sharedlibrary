@@ -6,7 +6,7 @@ pipeline{
         string(name: 'SERVICE_NAME', defaultValue: '', description: 'Enter the Service Name')
     }
     environment{
-        WEBHOOK_TOKEN = credentialsId("webhooktoken")
+        WEBHOOK_TOKEN = credentials("webhooktoken")
     }
     stages{
         stage("Invoking Job DSL"){
