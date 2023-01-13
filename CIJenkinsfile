@@ -7,8 +7,8 @@ pipeline{
         //agent {label "master"}
             steps{
                 script{
-                    build.build(ENV_APPLICATION_NAME, ENV_NAMESPACE_NAME)
-                    build.build(ENV_APPLICATION_NAME)
+                    build_utils.build(ENV_APPLICATION_NAME, ENV_NAMESPACE_NAME)
+                    build_utils.build(ENV_APPLICATION_NAME)
                     echo "${ENV_APPLICATION_NAME}"
                     // git credentialsId: 'git', url: 'git@github.com:rahulraj2/python.git'
                     // sh label: '', script: "docker build -t ${ENV_APPLICATION_NAME} . --no-cache"
