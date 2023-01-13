@@ -4,7 +4,7 @@ pipeline{
     agent any
     stages{
         stage('Calling Build Method'){
-        agent {label "master"}
+        //agent {label "master"}
             steps{
                 script{
                     build(ENV_APPLICATION_NAME, ENV_NAMESPACE_NAME)
