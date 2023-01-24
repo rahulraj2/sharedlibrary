@@ -10,12 +10,20 @@ pipeline{
                     println ENV_APPLICATION_NAME
                     println ENV_NAMESPACE_NAME
                     build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME, ENV_NAMESPACE_NAME: ENV_NAMESPACE_NAME)
-                    build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME)
-                    echo "${ENV_APPLICATION_NAME}"
-                    // git credentialsId: 'git', url: 'git@github.com:rahulraj2/python.git'
-                    // sh label: '', script: "docker build -t ${ENV_APPLICATION_NAME} . --no-cache"
+                    //build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME)
                 }
             }
+        }
+    }
+    post {
+        always {
+            echo "The build ${env.JOB_NAME} #${env.BUILD_NUMBER} has finished"
+        }
+        failure {
+            echo "The build ${env.JOB_NAME} #${env.BUILD_NUMBER} has failured"
+        }
+        success {
+            echo "The build ${env.JOB_NAME} #${env.BUILD_NUMBER} has successfully been built"
         }
     }
 }
