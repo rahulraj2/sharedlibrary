@@ -10,6 +10,7 @@ pipeline{
                     println ENV_APPLICATION_NAME
                     println ENV_NAMESPACE_NAME
                     build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME, ENV_NAMESPACE_NAME: ENV_NAMESPACE_NAME)
+                    println STAGE_NAME
                     //build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME)
                 }
             }
