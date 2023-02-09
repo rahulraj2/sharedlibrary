@@ -11,6 +11,7 @@ pipeline{
                     println ENV_NAMESPACE_NAME
                     build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME, ENV_NAMESPACE_NAME: ENV_NAMESPACE_NAME)
                     println STAGE_NAME
+                    if(ENV_APPLICATION_NAME == ("SomeApplication" || "abc"))
                     //build_utils.build(ENV_APPLICATION_NAME: ENV_APPLICATION_NAME)
                 }
             }
